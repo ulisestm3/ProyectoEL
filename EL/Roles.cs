@@ -8,10 +8,8 @@ namespace EL
     {
         [Key]
         public short IdRol { get; set; }
-        
         [MaxLength(50),Required]
         public string Rol { get; set; }
-
         [Required]
         public bool Activo { get; set; }
         [Required]

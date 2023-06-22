@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace EL
 {
@@ -15,7 +16,7 @@ namespace EL
         [MaxLength (50), Required]
         public string UserName { get; set; }
         [Required]
-        public string Password { get; set; }
+        public byte[] Password { get; set; }
         [Required]
         public bool Bloqueado { get; set; }
         [Required]
@@ -36,7 +37,7 @@ namespace EL
             NombreCompleto = string.Empty;
             Correo = string.Empty;
             UserName = string.Empty;
-            Password = string.Empty;
+            Password = UTF8Encoding.UTF8.GetBytes(string.Empty);
         }
     }
 }
