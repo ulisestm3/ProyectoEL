@@ -6,69 +6,59 @@ namespace DAL
 {
     public static class DAL_Permisos
     {
-        public static int Insertar(Permisos Entidad)
+        public static Permisos Insert(Permisos Entidad)
         {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("InsertarPermiso", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Permiso", Entidad.Permiso);
-            cmd.Parameters.AddWithValue("@IdUsuarioRegistra", Entidad.IdUsuarioRegistra);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
+            using (BDMPOO bd = new BDMPOO())
+            {
+                Entidad.Activo = true;
+                Entidad.FechaRegistro = DateTime.Now;
+                bd.Permisos.Add(Entidad);
+                bd.SaveChanges();
+                return Entidad;
+            }
         }
-
-        public static int Actualizar(Permisos Entidad)
+        public static bool Update(Permisos Entidad)
         {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("ActualizarFormulario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdPermiso", Entidad.IdPermiso);
-            cmd.Parameters.AddWithValue("@Permiso", Entidad.Permiso);
-            cmd.Parameters.AddWithValue("@IdUsuarioActualiza", Entidad.IdUsuarioActualiza);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
-        }
-        public static DataTable Select(Permisos Entidad)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("SelectPermiso", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdPermiso", Entidad.IdPermiso);
-            SqlDataAdapter da = new SqlDataAdapter();
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            da.Dispose();
-            return dt;
+            using (BDMPOO bd = new BDMPOO())
+            {
+                var Registro = bd.Permisos.Find(Entidad.IdPermiso);
+                Registro.Permiso = Entidad.Permiso;
+                Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
+                Registro.FechaActualizacion = Entidad.FechaActualizacion;
+                return bd.SaveChanges() > 0;
+            }
         }
         public static bool Anular(Permisos Entidad)
         {
-            try
+            using (BDMPOO bd = new BDMPOO())
             {
-                SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-                sqlConnection.Open();
-                SqlCommand Cmd = new SqlCommand("AnularPermiso", sqlConnection);
-                Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.AddWithValue("@IdPermiso", Entidad.IdPermiso);
-                Cmd.Parameters.AddWithValue("@IdUsuarioActualizar", Entidad.IdUsuarioActualiza);
-                Cmd.ExecuteNonQuery();
-                sqlConnection.Close();
-                sqlConnection.Dispose();
-                return true;
+                var Registro = bd.Permisos.Find(Entidad.IdPermiso);
+                Registro.Activo = Entidad.Activo;
+                Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
+                Registro.FechaActualizacion = Entidad.FechaActualizacion;
+                return bd.SaveChanges() > 0;
             }
-            catch
+        }
+        public static bool Existe(Permisos Entidad)
+        {
+            using (BDMPOO bd = new BDMPOO())
             {
-                return false;
+                return bd.Permisos.Where(a => a.IdPermiso == Entidad.IdPermiso).Count() > 0;
             }
-
+        }
+        public static Permisos Registro(Permisos Entidad)
+        {
+            using (BDMPOO bd = new BDMPOO())
+            {
+                return bd.Permisos.Where(a => a.IdPermiso == Entidad.IdPermiso).SingleOrDefault();
+            }
+        }
+        public static List<Permisos> Lista(bool Activo = true)
+        {
+            using (BDMPOO bd = new BDMPOO())
+            {
+                return bd.Permisos.Where(a => a.Activo == Activo).ToList();
+            }
         }
     }
 }
