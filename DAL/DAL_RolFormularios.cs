@@ -1,63 +1,58 @@
-﻿using System.Data.SqlClient;
-using EL;
+﻿using EL;
 using System.Data;
 
 namespace DAL
 {
     public static class DAL_RolFormularios
     {
-        public static int Insertar(RolFormularios Entidad)
+        public static RolFormularios Insert (RolFormularios Entidad)
         {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("InsertarRolFormulario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdRolFormulario", Entidad.IdRolFormulario);
-            cmd.Parameters.AddWithValue("@IdRol", Entidad.IdRol);
-            cmd.Parameters.AddWithValue("@IdFormulario", Entidad.IdFormulario);
-            cmd.Parameters.AddWithValue("@IdUsuarioRegistra", Entidad.IdUsuarioRegistra);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
+            using (BDMPOO bd =  new BDMPOO())
+            {
+                Entidad.Activo = true;
+                Entidad.FechaRegistro = DateTime.Now;
+                bd.RolFormularios.Add(Entidad);
+                bd.SaveChanges();
+                return Entidad;
+            }
         }
 
-        public static int Actualizar(RolFormularios Entidad)
+        public static bool Update (RolFormularios Entidad)
         {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("ActualizarRolFormulario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdRolFormulario", Entidad.IdRolFormulario);
-            cmd.Parameters.AddWithValue("@IdRol", Entidad.IdRol);
-            cmd.Parameters.AddWithValue("@IdFormulario", Entidad.IdFormulario);
-            cmd.Parameters.AddWithValue("@IdUsuarioActualiza", Entidad.IdUsuarioActualiza);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
+            using (BDMPOO bd = new BDMPOO())
+            {
+                var Registro = bd.RolFormularios.Find(Entidad.IdRolFormulario);
+                Registro.IdRol = Entidad.IdRol;
+                Registro.IdFormulario = Entidad.IdFormulario;
+                Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
+                Registro.FechaActualizacion = Entidad.FechaActualizacion;
+                return bd.SaveChanges() > 0;
+
+            }
         }
 
-        public static bool Anular(RolFormularios Entidad)
+        public static bool Existe (RolFormularios Entidad)
         {
-            try
+            using ( BDMPOO bd = new BDMPOO())
             {
-                SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-                sqlConnection.Open();
-                SqlCommand Cmd = new SqlCommand("AnularRolFormulario", sqlConnection);
-                Cmd.CommandType = CommandType.StoredProcedure;
-                Cmd.Parameters.AddWithValue("@IdRolFormulario", Entidad.IdRolFormulario);
-                Cmd.Parameters.AddWithValue("@IdUsuarioActualizar", Entidad.IdUsuarioActualiza);
-                Cmd.ExecuteNonQuery();
-                sqlConnection.Close();
-                sqlConnection.Dispose();
-                return true;
+                return bd.RolFormularios.Where(a => a.IdRolFormulario == Entidad.IdRolFormulario) > 0;
             }
-            catch
-            {
-                return false;
-            }
+        }
 
+        public static RolFormularios Registro (RolFormularios Entidad)
+        {
+            using (BDMPOO bd = new BDMPOO())
+            {
+                return bd.RolFormularios.Where(a => a.IdRolFormulario == Entidad.IdRolFormulario).SingleOrDefault();
+            }
+        }
+
+        public static List<RolFormularios> Lista(bool Activo = true)
+        {
+            using (BDMPOO bd = new BDMPOO())
+            {
+                return bd.RolFormularios.Where(a => a.Activo == Activo).ToList();
+            }
         }
     }
 }

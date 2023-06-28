@@ -1,153 +1,74 @@
-﻿using System.Data.SqlClient;
-using EL;
+﻿using EL;
 using System.Data;
 
 namespace DAL
 {
     public static class DAL_Usuarios
     {
-        public static int Insertar(Usuarios Entidad)
+        public static Usuarios Insert (Usuarios Entidad)
         {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("InsertarUsuario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@NombreCompleto", Entidad.NombreCompleto);
-            cmd.Parameters.AddWithValue("@Correo", Entidad.Correo);
-            cmd.Parameters.AddWithValue("@UserName", Entidad.UserName);
-            cmd.Parameters.AddWithValue("@Password", Entidad.Password);
-            cmd.Parameters.AddWithValue("@IdRol", Entidad.IdRol);
-            cmd.Parameters.AddWithValue("@IdUsuarioRegistra", Entidad.IdUsuarioRegistra);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
-        }
-        public static int Actualizar(Usuarios Entidad)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("ActualizarUsuario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
-            cmd.Parameters.AddWithValue("@NombreCompleto", Entidad.NombreCompleto);
-            cmd.Parameters.AddWithValue("@Correo", Entidad.Correo);
-            cmd.Parameters.AddWithValue("@UserName", Entidad.UserName);
-            cmd.Parameters.AddWithValue("@IdRol", Entidad.IdRol);
-            cmd.Parameters.AddWithValue("@IdUsuarioActualiza", Entidad.IdUsuarioActualiza);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
-        }
-        public static int Anular(Usuarios Entidad)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("AnularUsuario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
-            cmd.Parameters.AddWithValue("@IdUsuarioActualiza", Entidad.IdUsuarioActualiza);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
-        }
-        public static DataTable Select(Usuarios Entidad)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("SelectUsuario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            da.Dispose();
-            return dt;
-        }
-        public static int Bloqueo(Usuarios Entidad)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("BloquearUsuario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
-            cmd.Parameters.AddWithValue("@IdUsuarioActualiza", Entidad.IdUsuarioActualiza);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
-        }
-        public static int ActualizarPassword(Usuarios Entidad)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("ActualizarPassword", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
-            cmd.Parameters.AddWithValue("@Password", Entidad.Password);
-            cmd.Parameters.AddWithValue("@IdUsuarioActualiza", Entidad.IdUsuarioActualiza);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
-        }
-        public static int SumarIntentosFallidos(Usuarios Entidad)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("SumarIntentosFallidos", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@IdUsuario", Entidad.IdUsuario);
-            cmd.Parameters.AddWithValue("@IdUsuarioActualiza", Entidad.IdUsuarioActualiza);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID;
-        }
-        public static bool ValidarUsuario(string UserName)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("ValidarUsuario", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserName", UserName);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID > 0;
-        }
-        public static bool ValidarCredenciales(string UserName, byte[] Password)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("ValidarCredenciales", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserName", UserName);
-            cmd.Parameters.AddWithValue("@Password", Password);
-            int ID = Convert.ToInt32(cmd.ExecuteScalar());
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return ID > 0;
-        }
-        public static DataTable Select_x_UserName(string UserName)
-        {
-            SqlConnection sqlConnection = new SqlConnection(Conexion.ConexionString());
-            sqlConnection.Open();
-            SqlCommand cmd = new SqlCommand("Select_x_UserName", sqlConnection);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserName", UserName);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            da.Dispose();
-            sqlConnection.Close();
-            sqlConnection.Dispose();
-            return dt;
+            using (BDMPOO bd =  new BDMPOO())
+            {
+                Entidad.Activo = true;
+                Entidad.FechaRegistro = DateTime.Now;
+                bd.Usuarios.Add(Entidad);
+                bd.SaveChanges();
+                return Entidad;
+            }
         }
 
+        public static bool Update (Usuarios Entidad)
+        {
+            using ( BDMPOO bd = new BDMPOO())
+            {
+                var Registro = bd.Usuarios.Find(Entidad.IdUsuario);
+                Registro.NombreCompleto = Entidad.NombreCompleto;
+                Registro.Correo = Entidad.Correo;
+                Registro.UserName = Entidad.UserName;
+                Registro.Password = Entidad.Password;
+                Registro.Bloqueado = Entidad.Bloqueado;
+                Registro.IntentosFallidos = Entidad.IntentosFallidos;
+                Registro.IdRol = Entidad.IdRol;
+                Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
+                Registro.FechaActualizacion = Entidad.FechaActualizacion;
+                return bd .SaveChanges()>0;
+            }
+        }
+
+        public static bool Anular (Usuarios Entidad)
+        {
+            using (BDMPOO bd = new BDMPOO())
+            {
+                var Registro = bd.Usuarios.Find(Entidad.IdUsuario);
+                Registro.Activo = Entidad.Activo;
+                Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
+                Registro.FechaActualizacion = Entidad.FechaActualizacion;
+                return bd .SaveChanges()>0;
+            }
+        }
+
+        public static bool Existe (Usuarios Entidad)
+        {
+            using (BDMPOO bd = new BDMPOO())
+            {
+                return bd.Usuarios.Where(a=>a.IdUsuario == Entidad.IdUsuario).Count() > 0;
+            }
+        }
+
+        public static Usuarios Registro (Usuarios Entidad)
+        {
+            using ( BDMPOO bd = new BDMPOO())
+            {
+                return bd.Usuarios.Where(a => a.IdUsuario == Entidad.IdUsuario).SingleOrDefault();
+            }
+        }
+
+        public static List<Usuarios> Lista(bool Activo = true)
+        {
+            using (BDMPOO bd = new BDMPOO())
+            {
+                return bd.Usuarios.Where(a=>a.Activo == Activo).ToList();
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace DAL
         public static Roles Insert(Roles Entidad)
         {
             using (BDMPOO bd = new())
-                Entidad.Activo = true;
+            Entidad.Activo = true;
             Entidad.FechaRegistro = DateTime.Now;
             bd.Roles.Add(Entidad);
             bd.SaveChanges();

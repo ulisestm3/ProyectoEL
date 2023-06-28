@@ -1,28 +1,33 @@
 ﻿using DAL;
 using EL;
-using System.Data;
 
 namespace BLL
 {
     public static class BLL_Roles
     {
-        public static int Insertar(Roles Entidad)
+        public static Roles Insert(Roles Entidad)
         {
-            return DAL_Roles.Insertar(Entidad);
+            return DAL_Roles.Insert(Entidad);
         }
 
-        public static int Actualizar(Roles Entidad)
+        public static bool Update(Roles Entidad)
         {
-            return DAL_Roles.Actualizar(Entidad);
-        }
-        public static DataTable Select(Roles Entidad)
-        {
-            return DAL_Roles.Select(Entidad);
-        }
-        public static bool Anular(Roles Entidad)
-        {
-            return DAL_Roles.Anular(Entidad);
+            return DAL_Roles.Update(Entidad);
         }
 
+        public static bool Delete(Roles Entidad)
+        {
+            return DAL_Roles.Delete(Entidad);
+        }
+
+        public static Roles Registro(short IdRegistro)
+        {
+            return DAL_Roles.Registro(IdRegistro);
+        }
+
+        public static List<Roles> Listar(bool Activo = true)
+        {
+            return DAL_Roles.Listar(Activo);
+        }
     }
 }

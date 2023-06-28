@@ -1,27 +1,40 @@
 ﻿using DAL;
 using EL;
-using System.Data;
 
 namespace BLL
 {
     public static class BLL_Permisos
     {
-        public static int Insertar(Permisos Entidad)
+            
+        public static Permisos Insert(Permisos Entidad)
         {
-            return DAL_Permisos.Insertar(Entidad);
+            return DAL_Permisos.Insert(Entidad);
         }
 
-        public static int Actualizar(Permisos Entidad)
+        public static bool Update(Permisos Entidad)
         {
-            return DAL_Permisos.Actualizar(Entidad);
+            return DAL_Permisos.Update(Entidad);
         }
-        public static DataTable Select(Permisos Entidad)
-        {
-            return DAL_Permisos.Select(Entidad);
-        }
+
         public static bool Anular(Permisos Entidad)
         {
             return DAL_Permisos.Anular(Entidad);
         }
+
+        public static bool Existe(Permisos Entidad)
+        {
+            return DAL_Permisos.Existe(Entidad);
+        }
+
+        public static Permisos Registro(Permisos Entidad)
+        {
+            return DAL_Permisos.Registro(Entidad);
+        }
+
+        public static List<Permisos> Lista(bool Activo = true)
+        {
+            return DAL_Permisos.Lista(Activo);
+        }
+   
     }
 }

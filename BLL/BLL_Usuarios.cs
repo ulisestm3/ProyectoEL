@@ -1,50 +1,38 @@
 ﻿using DAL;
 using EL;
-using System.Data;
 
 namespace BLL
 {
     public static class BLL_Usuarios
     {
-        public static int Insertar(Usuarios Entidad)
+        public static Usuarios Insert(Usuarios Entidad)
         {
-            return DAL_Usuarios.Insertar(Entidad);
+            return DAL_Usuarios.Insert(Entidad);
         }
-        public static int Actualizar(Usuarios Entidad)
+
+        public static bool Update(Usuarios Entidad)
         {
-            return DAL_Usuarios.Actualizar(Entidad);
+            return DAL_Usuarios.Update(Entidad);
         }
-        public static int Anular(Usuarios Entidad)
+
+        public static bool Anular(Usuarios Entidad)
         {
             return DAL_Usuarios.Anular(Entidad);
         }
-        public static DataTable Select(Usuarios Entidad)
+
+        public static bool Existe(Usuarios Entidad)
         {
-            return DAL_Usuarios.Select(Entidad);
+            return DAL_Usuarios.Existe(Entidad);
         }
-        public static int Bloqueo(Usuarios Entidad)
+
+        public static Usuarios Registro(Usuarios Entidad)
         {
-            return DAL_Usuarios.Bloqueo(Entidad);
+            return DAL_Usuarios.Registro(Entidad);
         }
-        public static int ActualizarPassword(Usuarios Entidad)
+
+        public static List<Usuarios> Lista(bool Activo = true)
         {
-            return DAL_Usuarios.ActualizarPassword(Entidad);
-        }
-        public static int SumarIntentosFallidos(Usuarios Entidad)
-        {
-            return DAL_Usuarios.SumarIntentosFallidos(Entidad);
-        }
-        public static bool ValidarUsuario(string UserName)
-        {
-            return DAL_Usuarios.ValidarUsuario(UserName);
-        }
-        public static bool ValidarCredenciales(string UserName, byte[] Password)
-        {
-            return DAL_Usuarios.ValidarCredenciales(UserName, Password);
-        }
-        public static DataTable Select_x_UserName(string UserName)
-        {
-            return DAL_Usuarios.Select_x_UserName(UserName);
+            return DAL_Usuarios.Lista(Activo);
         }
     }
 }

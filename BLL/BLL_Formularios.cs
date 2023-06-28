@@ -1,27 +1,39 @@
 ﻿using DAL;
 using EL;
-using System.Data;
 
 namespace BLL
 {
     public static class BLL_Formularios
     {
-        public static int Insertar(Formularios Entidad)
+        public static Formularios Insert(Formularios Entidad)
         {
-            return DAL_Formularios.Insertar(Entidad);
+            return DAL_Formularios.Insert(Entidad);
         }
 
-        public static int Actualizar(Formularios Entidad)
+        public static bool Update(Formularios Entidad)
         {
-            return DAL_Formularios.Actualizar(Entidad);
+            return DAL_Formularios.Update(Entidad);
         }
-        public static DataTable Select(Formularios Entidad)
-        {
-            return DAL_Formularios.Select(Entidad);
-        }
+
         public static bool Anular(Formularios Entidad)
         {
             return DAL_Formularios.Anular(Entidad);
         }
+
+        public static bool Existe(Formularios Entidad)
+        {
+            return DAL_Formularios.Existe(Entidad);
+        }
+
+        public static Formularios Registro(Formularios Entidad)
+        {
+            return DAL_Formularios.Registro(Entidad);
+        }
+
+        public static List<Formularios> Lista(bool Activo = true)
+        {
+            return DAL_Formularios.Lista(Activo);
+        }
+
     }
 }

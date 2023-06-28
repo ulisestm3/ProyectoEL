@@ -1,5 +1,4 @@
-﻿using System.Data.SqlClient;
-using EL;
+﻿using EL;
 using System.Data;
 
 namespace DAL
