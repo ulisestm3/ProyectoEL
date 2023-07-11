@@ -22,7 +22,7 @@ UserName VARCHAR(50) NOT NULL,
 Password VARBINARY(MAX) NOT NULL,
 Bloqueado BIT NOT NULL,
 IntentosFallidos TINYINT NOT NULL DEFAULT(0),
-IdRol SMALLINT FOREIGN KEY REFERENCES Roles(IdRol) NOT NULL,
+IdRol SMALLINT FOREIGN KEY REFERENCES Roles(IdRol),
 Activo BIT DEFAULT(1) NOT NULL,
 IdUsuarioRegistra INT NOT NULL,
 FechaRegistro DATETIME NOT NULL,
@@ -49,7 +49,6 @@ FechaRegistro DATETIME NOT NULL,
 IdUsuarioActualiza INT NULL,
 FechaActualizacion DATETIME NULL
 )
-GO
 CREATE TABLE RolFormularios
 (
 IdRolFormulario INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
@@ -75,12 +74,11 @@ IdUsuarioActualiza INT NULL,
 FechaActualizacion DATETIME NULL
 )
 GO
-CREATE TABLE Clientes
-(
+CREATE TABLE Clientes(
 IdCliente INT PRIMARY KEY IDENTITY(1,1),
-NombreCliente VARCHAR(200) NOT NULL,
-Numero VARCHAR(10) NOT NULL,
-Correo	VARCHAR(200) NOT NULL,
+NombreCliente VARCHAR(200),
+Numero VARCHAR(10),
+Correo	VARCHAR(200),
 Activo BIT DEFAULT(1) NOT NULL,
 IdUsuarioRegistra INT NOT NULL,
 FechaRegistro DATETIME NOT NULL,

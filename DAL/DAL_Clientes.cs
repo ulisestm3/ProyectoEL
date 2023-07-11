@@ -9,12 +9,15 @@ namespace DAL
         public static Clientes Insert(Clientes Entidad)
         {
             using (BDMPOO bd = new())
-            Entidad.Activo = true;
-            Entidad.FechaRegistro = DateTime.Now;
-            bd.Clientes.Add(Entidad);
-            bd.SaveChanges();
-            return Entidad;
+            {
+                Entidad.Activo = true;
+                Entidad.FechaRegistro = DateTime.Now;
+                bd.Clientes.Add(Entidad);
+                bd.SaveChanges();
+                return Entidad;
+            }
         }
+           
 
         //Actualizar
         public static bool Update(Clientes Entidad)
@@ -25,8 +28,12 @@ namespace DAL
             {
                 return false;
             }
+                        
+            Registro.NombreCliente = Entidad.NombreCliente;
+            Registro.Correo = Entidad.Correo;
+            Registro.Numero = Entidad.Numero;
 
-            Registro.Clientes = Entidad.IdCliente;
+            Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
             Registro.FechaActualizacion = DateTime.Now;
             return bd.SaveChanges() > 0;
         }
@@ -56,7 +63,9 @@ namespace DAL
         public static List<Clientes> Listar(bool Activo = true)
         {
             using BDMPOO bd = new();
-            return bd.Clientes.Where(a => a.Activo == Activo).ToList();
+            {
+                return bd.Clientes.Where(a => a.Activo == Activo).ToList();
+            }            
         }
     }
 }

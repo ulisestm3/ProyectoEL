@@ -9,13 +9,13 @@ namespace EL
         [Key]
         public short IdCliente { get; set; }
         [MaxLength(200), Required]
-        public string Nombre_Completo { get; set; }
+        public string NombreCliente { get; set; }
 
         [MaxLength(200), Required]
         public string Correo { get; set; }
 
         [MaxLength(10), Required]
-        public string Celular { get; set; }
+        public string Numero { get; set; }
 
         [Required]
         public bool Activo { get; set; }
@@ -28,10 +28,9 @@ namespace EL
 
         public Clientes()
         {
-            Nombre_Completo = string.Empty;
+            NombreCliente = string.Empty;
             Correo = string.Empty;
-            Celular = string.Empty;
+            Numero = string.Empty;
         }
-
     }
 }

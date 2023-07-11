@@ -35,7 +35,7 @@ namespace DAL
         {
             using ( BDMPOO bd = new BDMPOO())
             {
-                return bd.RolFormularios.Where(a => a.IdRolFormulario == Entidad.IdRolFormulario) > 0;
+                return bd.RolFormularios.Where(a => a.IdRolFormulario == Entidad.IdRolFormulario).Count() > 0;
             }
         }
 

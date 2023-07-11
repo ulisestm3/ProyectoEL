@@ -47,7 +47,7 @@ namespace DAL
         {
             using (BDMPOO bd =new BDMPOO())
             {
-                return bd.RolPermisos.Where(a=>a.IdRolPermiso == Entidad.IdRolPermiso).Count();
+                return bd.RolPermisos.Where(a => a.IdRolPermiso == Entidad.IdRolPermiso).Count() > 0;
             }
         }
 
@@ -55,7 +55,7 @@ namespace DAL
         {
             using (BDMPOO bd =new BDMPOO())
             {
-                return bd.RolPermisos.Where(a => a.IdRolPermiso == Entidad.IdRolPermiso).SingleOrDefault();
+                return bd.RolPermisos.Where(a=>a.IdRolPermiso == Entidad.IdRolPermiso).SingleOrDefault();
             }
         }
 

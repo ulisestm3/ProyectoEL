@@ -17,7 +17,7 @@ namespace BLL
 
         public static bool Existe(RolFormularios Entidad)
         {
-            return DAL_RolFormulariosExiste.Existe(Entidad);
+            return DAL_RolFormularios.Existe(Entidad);
         }
 
         public static RolFormularios Registro(RolFormularios Entidad)
