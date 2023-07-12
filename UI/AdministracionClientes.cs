@@ -20,11 +20,11 @@ namespace UI
         {
             try
             {
-                gripClientes.DataSource = BLL_Clientes.Listar();
+                gripClientes.DataSource = BLL_Clientes.Lista();
             }
             catch (Exception Error)
             {
-                MessageBox.Show(Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Error.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

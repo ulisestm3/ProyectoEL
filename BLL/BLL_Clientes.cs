@@ -3,7 +3,7 @@ using EL;
 
 namespace BLL
 {
-    public static class BLL_Clientes
+    public class BLL_Clientes
     {
         public static Clientes Insert(Clientes Entidad)
         {
@@ -13,18 +13,21 @@ namespace BLL
         {
             return DAL_Clientes.Update(Entidad);
         }
-        public static bool Delete(Clientes Entidad)
+        public static bool Anular(Clientes Entidad)
         {
-            return DAL_Clientes.Delete(Entidad);
+            return DAL_Clientes.Anular(Entidad);
         }
-        public static Clientes Registro(short IdRegistro)
+        public static bool Existe(Clientes Entidad)
         {
-            return DAL_Clientes.Registro(IdRegistro);
+            return DAL_Clientes.Existe(Entidad);
         }
-        public static List<Clientes> Listar(bool Activo = true)
+        public static Clientes Registro(Clientes Entidad)
         {
-            return DAL_Clientes.Listar(Activo);
+            return DAL_Clientes.Registro(Entidad);
         }
-
+        public static List<Clientes> Lista(bool Activo = true)
+        {
+            return DAL_Clientes.Lista(Activo);
+        }
     }
 }

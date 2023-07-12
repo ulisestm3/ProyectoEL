@@ -5,10 +5,9 @@ namespace DAL
 {
     public static class DAL_Clientes
     {
-        //Insertar
         public static Clientes Insert(Clientes Entidad)
         {
-            using (BDMPOO bd = new())
+            using (BDMPOO bd = new BDMPOO())
             {
                 Entidad.Activo = true;
                 Entidad.FechaRegistro = DateTime.Now;
@@ -17,55 +16,51 @@ namespace DAL
                 return Entidad;
             }
         }
-           
-
-        //Actualizar
         public static bool Update(Clientes Entidad)
         {
-            using BDMPOO bd = new();
-            var Registro = bd.Clientes.Find(Entidad.IdCliente);
-            if (Registro == null)
+            using (BDMPOO bd = new BDMPOO())
             {
-                return false;
+                var Registro = bd.Clientes.Find(Entidad.IdCliente);
+
+                Registro.NombreCliente = Entidad.NombreCliente;
+                Registro.Numero = Entidad.Numero;
+                Registro.Correo = Entidad.Correo;
+                Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
+                Registro.FechaActualizacion = Entidad.FechaActualizacion;
+                return bd.SaveChanges() > 0;
             }
-                        
-            Registro.NombreCliente = Entidad.NombreCliente;
-            Registro.Correo = Entidad.Correo;
-            Registro.Numero = Entidad.Numero;
-
-            Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
-            Registro.FechaActualizacion = DateTime.Now;
-            return bd.SaveChanges() > 0;
         }
-
-        //Anular
-        public static bool Delete(Clientes Entidad)
+        public static bool Anular(Clientes Entidad)
         {
-            using BDMPOO bd = new();
-            var Registro = bd.Clientes.Find(Entidad.IdCliente);
-            if (Registro == null)
+            using (BDMPOO bd = new BDMPOO())
             {
-                return false;
+                var Registro = bd.Clientes.Find(Entidad.IdCliente);
+                Registro.Activo = Entidad.Activo;
+                Registro.IdUsuarioActualiza = Entidad.IdUsuarioActualiza;
+                Registro.FechaActualizacion = Entidad.FechaActualizacion;
+                return bd.SaveChanges() > 0;
             }
-
-            Registro.Activo = false;
-            Registro.FechaActualizacion = DateTime.Now;
-            return bd.SaveChanges() > 0;
         }
-        //Seleccionar un registro
-        public static Clientes Registro(short IdRegistro)
+        public static bool Existe(Clientes Entidad)
         {
-            using BDMPOO bd = new();
-            return bd.Clientes.Find(IdRegistro);
+            using (BDMPOO bd = new BDMPOO())
+            {
+                return bd.Clientes.Where(a => a.IdCliente == Entidad.IdCliente).Count() > 0;
+            }
         }
-
-        //Listar todos los registros
-        public static List<Clientes> Listar(bool Activo = true)
+        public static Clientes Registro(Clientes Entidad)
         {
-            using BDMPOO bd = new();
+            using (BDMPOO bd = new BDMPOO())
+            {
+                return bd.Clientes.Where(a => a.IdCliente == Entidad.IdCliente).SingleOrDefault();
+            }
+        }
+        public static List<Clientes> Lista(bool Activo = true)
+        {
+            using (BDMPOO bd = new BDMPOO())
             {
                 return bd.Clientes.Where(a => a.Activo == Activo).ToList();
-            }            
+            }
         }
     }
 }
