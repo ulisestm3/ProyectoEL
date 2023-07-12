@@ -1,5 +1,5 @@
-using DAL;
 using BLL;
+using DAL;
 using EL;
 
 namespace UI
@@ -10,8 +10,7 @@ namespace UI
         {
             InitializeComponent();
         }
-
-        private void gripClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void AdministracionClientes_Load(object sender, EventArgs e)
         {
             Cargargrip();
         }
@@ -24,13 +23,15 @@ namespace UI
             }
             catch (Exception Error)
             {
-                MessageBox.Show(Error.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void LimpiarCampos()
         {
-
+            textNombreCliente.Text = string.Empty;
+            textCelular.Text = string.Empty;
+            textCorreo.Text = string.Empty;
         }
     }
 }

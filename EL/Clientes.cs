@@ -7,7 +7,7 @@ namespace EL
     public class Clientes
     {
         [Key]
-        public short IdCliente { get; set; }
+        public int IdCliente { get; set; }
         [MaxLength(200), Required]
         public string NombreCliente { get; set; }
 
