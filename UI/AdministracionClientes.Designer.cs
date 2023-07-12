@@ -45,111 +45,109 @@
             // lblNombreCliente
             // 
             lblNombreCliente.AutoSize = true;
-            lblNombreCliente.Location = new Point(31, 12);
+            lblNombreCliente.Location = new Point(27, 9);
             lblNombreCliente.Name = "lblNombreCliente";
-            lblNombreCliente.Size = new Size(139, 20);
+            lblNombreCliente.Size = new Size(110, 15);
             lblNombreCliente.TabIndex = 1;
             lblNombreCliente.Text = "Nombre del Cliente";
             // 
             // textNombreCliente
             // 
-            textNombreCliente.Location = new Point(35, 32);
-            textNombreCliente.Margin = new Padding(3, 4, 3, 4);
+            textNombreCliente.Location = new Point(31, 24);
             textNombreCliente.Name = "textNombreCliente";
-            textNombreCliente.Size = new Size(302, 27);
+            textNombreCliente.Size = new Size(265, 23);
             textNombreCliente.TabIndex = 2;
             // 
             // textCelular
             // 
-            textCelular.Location = new Point(35, 100);
-            textCelular.Margin = new Padding(3, 4, 3, 4);
+            textCelular.Location = new Point(31, 75);
             textCelular.Name = "textCelular";
-            textCelular.Size = new Size(302, 27);
+            textCelular.Size = new Size(265, 23);
             textCelular.TabIndex = 4;
             // 
             // lblCelular
             // 
             lblCelular.AutoSize = true;
-            lblCelular.Location = new Point(31, 80);
+            lblCelular.Location = new Point(27, 60);
             lblCelular.Name = "lblCelular";
-            lblCelular.Size = new Size(55, 20);
+            lblCelular.Size = new Size(44, 15);
             lblCelular.TabIndex = 3;
             lblCelular.Text = "Celular";
             // 
             // textCorreo
             // 
-            textCorreo.Location = new Point(35, 168);
-            textCorreo.Margin = new Padding(3, 4, 3, 4);
+            textCorreo.Location = new Point(31, 126);
             textCorreo.Name = "textCorreo";
-            textCorreo.Size = new Size(302, 27);
+            textCorreo.Size = new Size(265, 23);
             textCorreo.TabIndex = 6;
             // 
             // lblCorreo
             // 
             lblCorreo.AutoSize = true;
-            lblCorreo.Location = new Point(31, 148);
+            lblCorreo.Location = new Point(27, 111);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(54, 20);
+            lblCorreo.Size = new Size(43, 15);
             lblCorreo.TabIndex = 5;
             lblCorreo.Text = "Correo";
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(35, 237);
-            btnGuardar.Margin = new Padding(3, 4, 3, 4);
+            btnGuardar.Location = new Point(31, 178);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(86, 31);
+            btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 7;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
-            // btnGuardar.Click += btnGuardar_Click;
             // 
             // btnAnular
             // 
-            btnAnular.Location = new Point(150, 237);
-            btnAnular.Margin = new Padding(3, 4, 3, 4);
+            btnAnular.Location = new Point(131, 178);
             btnAnular.Name = "btnAnular";
-            btnAnular.Size = new Size(86, 31);
+            btnAnular.Size = new Size(75, 23);
             btnAnular.TabIndex = 8;
             btnAnular.Text = "Anular";
             btnAnular.UseVisualStyleBackColor = true;
             // 
             // btnReset
             // 
-            btnReset.Location = new Point(253, 237);
-            btnReset.Margin = new Padding(3, 4, 3, 4);
+            btnReset.Location = new Point(221, 178);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(86, 31);
+            btnReset.Size = new Size(75, 23);
             btnReset.TabIndex = 9;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = true;
             // 
             // gripClientes
             // 
+            gripClientes.AllowUserToAddRows = false;
+            gripClientes.AllowUserToDeleteRows = false;
+            gripClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gripClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gripClientes.Location = new Point(35, 336);
-            gripClientes.Margin = new Padding(3, 4, 3, 4);
+            gripClientes.Location = new Point(31, 252);
+            gripClientes.MultiSelect = false;
             gripClientes.Name = "gripClientes";
+            gripClientes.RowHeadersVisible = false;
             gripClientes.RowHeadersWidth = 51;
             gripClientes.RowTemplate.Height = 25;
-            gripClientes.Size = new Size(503, 200);
+            gripClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gripClientes.Size = new Size(440, 150);
             gripClientes.TabIndex = 10;
             gripClientes.CellContentClick += AdministracionClientes_Load;
             // 
             // lblgripclientes
             // 
             lblgripclientes.AutoSize = true;
-            lblgripclientes.Location = new Point(35, 312);
+            lblgripclientes.Location = new Point(31, 234);
             lblgripclientes.Name = "lblgripclientes";
-            lblgripclientes.Size = new Size(134, 20);
+            lblgripclientes.Size = new Size(106, 15);
             lblgripclientes.TabIndex = 11;
             lblgripclientes.Text = "Listado de Clientes";
             // 
             // AdministracionClientes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(574, 567);
+            ClientSize = new Size(502, 425);
             Controls.Add(lblgripclientes);
             Controls.Add(gripClientes);
             Controls.Add(btnReset);
@@ -162,7 +160,6 @@
             Controls.Add(textNombreCliente);
             Controls.Add(lblNombreCliente);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             Name = "AdministracionClientes";
             StartPosition = FormStartPosition.CenterScreen;
