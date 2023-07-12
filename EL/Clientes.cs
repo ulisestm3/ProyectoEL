@@ -11,11 +11,11 @@ namespace EL
         [MaxLength(200), Required]
         public string NombreCliente { get; set; }
 
-        [MaxLength(200), Required]
-        public string Correo { get; set; }
-
         [MaxLength(10), Required]
         public string Numero { get; set; }
+
+        [MaxLength(200), Required]
+        public string Correo { get; set; }      
 
         [Required]
         public bool Activo { get; set; }
