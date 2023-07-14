@@ -109,6 +109,7 @@
             btnAnular.TabIndex = 8;
             btnAnular.Text = "Anular";
             btnAnular.UseVisualStyleBackColor = true;
+            btnAnular.Click += btnAnular_Click;
             // 
             // btnNuevo
             // 

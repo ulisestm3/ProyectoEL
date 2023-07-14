@@ -6,6 +6,7 @@ namespace UI
 {
     public partial class AdministracionClientes : Form
     {
+        //variables gobales
         private static int IdUsuarioSesion = 1;
         private static int IdRegistro = 0;
 
@@ -102,15 +103,38 @@ namespace UI
                     return;
                 }
                 //Insertar
-                
+
                 if (BLL_Clientes.Insert(Entidad).IdCliente > 0)
                 {
                     MessageBox.Show("Registro agregado con exito");
                     Cargargrip();
                     return;
                 }
-                MessageBox.Show("Registro no fue actualizado con exito");
+                MessageBox.Show("El Registro no fue actualizado con exito");
                 return;
+            }
+        }
+
+        private void Anular()
+        {
+            try
+            {
+                Clientes entidad = new();
+                entidad.IdCliente = IdRegistro;
+                entidad.IdUsuarioRegistra = IdUsuarioSesion;
+                if (BLL_Clientes.Anular(entidad))
+                {
+                    MessageBox.Show("Registro anulado con exito");
+                    Cargargrip();
+                    return;
+                }
+                MessageBox.Show("El Registro no fue anulado con exito");
+                return;
+            }
+            catch (Exception Error)
+            {
+
+                MessageBox.Show(Error.Message);
             }
         }
 
@@ -139,6 +163,7 @@ namespace UI
             textCorreo.Text = string.Empty;
             lbl_IdRegistro.Text = string.Empty;
         }
+
         #endregion
 
         #region Eventos de los controles
@@ -154,10 +179,15 @@ namespace UI
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            LimpiarCampos();
+            Cargargrip();
+        }
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+            Anular();
         }
 
         #endregion
+
 
     }
 }
