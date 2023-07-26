@@ -29,5 +29,10 @@ namespace BLL
         {
             return DAL_Clientes.Lista(Activo);
         }
+        public static bool ValidarNumero(string Numero, int IdRegistro)
+        {
+            return BLL_Clientes.ValidarNumero(Numero,IdRegistro);
+        }
+
     }
 }

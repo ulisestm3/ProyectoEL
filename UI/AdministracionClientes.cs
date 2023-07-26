@@ -1,6 +1,6 @@
 using BLL;
-using DAL;
 using EL;
+using Utility;
 
 namespace UI
 {
@@ -49,7 +49,7 @@ namespace UI
                 MessageBox.Show("Ingrese el nombre del cliente");
                 return false;
             }
-            if (!(textNombreCliente.Text.Length < 200))
+            if ((textNombreCliente.Text.Length > 200))
             {
                 MessageBox.Show("El campo nombre del cliente debe ser menor a 200 caracteres");
                 return false;
@@ -60,9 +60,9 @@ namespace UI
                 MessageBox.Show("Ingrese el nombre del cliente");
                 return false;
             }
-            if (!(textNumero.Text.Length < 10))
+            if (textNumero.Text.Length < 8 || textNumero.Text.Length > 8)
             {
-                MessageBox.Show("El campo número debe ser menor a 10 caracteres");
+                MessageBox.Show("Ingrese un número de teléfono válido");
                 return false;
             }
 
@@ -76,6 +76,12 @@ namespace UI
                 MessageBox.Show("El campo correo debe ser menor a 200 caracteres");
                 return false;
             }
+            if (!General.ValidateEmail(textCorreo.Text))
+            {
+                MessageBox.Show("Ingrese un correo válido");
+                return false;
+            }
+
             return true;
         }
 
@@ -186,8 +192,12 @@ namespace UI
             Anular();
         }
 
-        #endregion
+        private void textNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == 8);
+        }
 
+        #endregion
 
     }
 }

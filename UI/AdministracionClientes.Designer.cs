@@ -55,6 +55,7 @@
             // textNombreCliente
             // 
             textNombreCliente.Location = new Point(19, 24);
+            textNombreCliente.MaxLength = 200;
             textNombreCliente.Name = "textNombreCliente";
             textNombreCliente.Size = new Size(388, 23);
             textNombreCliente.TabIndex = 2;
@@ -62,9 +63,11 @@
             // textNumero
             // 
             textNumero.Location = new Point(19, 75);
+            textNumero.MaxLength = 8;
             textNumero.Name = "textNumero";
             textNumero.Size = new Size(388, 23);
             textNumero.TabIndex = 4;
+            textNumero.KeyPress += textNumero_KeyPress;
             // 
             // lblNumero
             // 
@@ -78,6 +81,7 @@
             // textCorreo
             // 
             textCorreo.Location = new Point(19, 126);
+            textCorreo.MaxLength = 200;
             textCorreo.Name = "textCorreo";
             textCorreo.Size = new Size(388, 23);
             textCorreo.TabIndex = 6;
