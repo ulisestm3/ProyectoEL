@@ -46,60 +46,64 @@
             // lblNombreCliente
             // 
             lblNombreCliente.AutoSize = true;
-            lblNombreCliente.Location = new Point(15, 9);
+            lblNombreCliente.Location = new Point(17, 12);
             lblNombreCliente.Name = "lblNombreCliente";
-            lblNombreCliente.Size = new Size(110, 15);
+            lblNombreCliente.Size = new Size(139, 20);
             lblNombreCliente.TabIndex = 1;
             lblNombreCliente.Text = "Nombre del Cliente";
             // 
             // textNombreCliente
             // 
-            textNombreCliente.Location = new Point(19, 24);
+            textNombreCliente.Location = new Point(22, 32);
+            textNombreCliente.Margin = new Padding(3, 4, 3, 4);
             textNombreCliente.MaxLength = 200;
             textNombreCliente.Name = "textNombreCliente";
-            textNombreCliente.Size = new Size(388, 23);
+            textNombreCliente.Size = new Size(443, 27);
             textNombreCliente.TabIndex = 2;
             // 
             // textNumero
             // 
-            textNumero.Location = new Point(19, 75);
+            textNumero.Location = new Point(22, 100);
+            textNumero.Margin = new Padding(3, 4, 3, 4);
             textNumero.MaxLength = 8;
             textNumero.Name = "textNumero";
-            textNumero.Size = new Size(388, 23);
+            textNumero.Size = new Size(443, 27);
             textNumero.TabIndex = 4;
             textNumero.KeyPress += textNumero_KeyPress;
             // 
             // lblNumero
             // 
             lblNumero.AutoSize = true;
-            lblNumero.Location = new Point(15, 60);
+            lblNumero.Location = new Point(17, 80);
             lblNumero.Name = "lblNumero";
-            lblNumero.Size = new Size(51, 15);
+            lblNumero.Size = new Size(63, 20);
             lblNumero.TabIndex = 3;
             lblNumero.Text = "Número";
             // 
             // textCorreo
             // 
-            textCorreo.Location = new Point(19, 126);
+            textCorreo.Location = new Point(22, 168);
+            textCorreo.Margin = new Padding(3, 4, 3, 4);
             textCorreo.MaxLength = 200;
             textCorreo.Name = "textCorreo";
-            textCorreo.Size = new Size(388, 23);
+            textCorreo.Size = new Size(443, 27);
             textCorreo.TabIndex = 6;
             // 
             // lblCorreo
             // 
             lblCorreo.AutoSize = true;
-            lblCorreo.Location = new Point(15, 111);
+            lblCorreo.Location = new Point(17, 148);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(43, 15);
+            lblCorreo.Size = new Size(54, 20);
             lblCorreo.TabIndex = 5;
             lblCorreo.Text = "Correo";
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(116, 178);
+            btnGuardar.Location = new Point(133, 237);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(87, 23);
+            btnGuardar.Size = new Size(99, 31);
             btnGuardar.TabIndex = 7;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -107,9 +111,10 @@
             // 
             // btnAnular
             // 
-            btnAnular.Location = new Point(209, 178);
+            btnAnular.Location = new Point(239, 237);
+            btnAnular.Margin = new Padding(3, 4, 3, 4);
             btnAnular.Name = "btnAnular";
-            btnAnular.Size = new Size(91, 23);
+            btnAnular.Size = new Size(104, 31);
             btnAnular.TabIndex = 8;
             btnAnular.Text = "Anular";
             btnAnular.UseVisualStyleBackColor = true;
@@ -117,9 +122,10 @@
             // 
             // btnNuevo
             // 
-            btnNuevo.Location = new Point(19, 178);
+            btnNuevo.Location = new Point(22, 237);
+            btnNuevo.Margin = new Padding(3, 4, 3, 4);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(91, 23);
+            btnNuevo.Size = new Size(104, 31);
             btnNuevo.TabIndex = 9;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
@@ -131,40 +137,41 @@
             gripClientes.AllowUserToDeleteRows = false;
             gripClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gripClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gripClientes.Location = new Point(19, 252);
+            gripClientes.Location = new Point(22, 336);
+            gripClientes.Margin = new Padding(3, 4, 3, 4);
             gripClientes.MultiSelect = false;
             gripClientes.Name = "gripClientes";
             gripClientes.RowHeadersVisible = false;
             gripClientes.RowHeadersWidth = 51;
             gripClientes.RowTemplate.Height = 25;
             gripClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gripClientes.Size = new Size(388, 150);
+            gripClientes.Size = new Size(479, 200);
             gripClientes.TabIndex = 10;
             gripClientes.CellClick += gripClientes_CellClick;
             // 
             // lblgripclientes
             // 
             lblgripclientes.AutoSize = true;
-            lblgripclientes.Location = new Point(19, 234);
+            lblgripclientes.Location = new Point(22, 312);
             lblgripclientes.Name = "lblgripclientes";
-            lblgripclientes.Size = new Size(106, 15);
+            lblgripclientes.Size = new Size(134, 20);
             lblgripclientes.TabIndex = 11;
             lblgripclientes.Text = "Listado de Clientes";
             // 
             // lbl_IdRegistro
             // 
             lbl_IdRegistro.AutoSize = true;
-            lbl_IdRegistro.Location = new Point(366, 9);
+            lbl_IdRegistro.Location = new Point(418, 12);
             lbl_IdRegistro.Name = "lbl_IdRegistro";
-            lbl_IdRegistro.Size = new Size(41, 15);
+            lbl_IdRegistro.Size = new Size(53, 20);
             lbl_IdRegistro.TabIndex = 12;
             lbl_IdRegistro.Text = "Label1";
             // 
             // AdministracionClientes
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(433, 425);
+            ClientSize = new Size(535, 567);
             Controls.Add(lbl_IdRegistro);
             Controls.Add(lblgripclientes);
             Controls.Add(gripClientes);
@@ -178,6 +185,7 @@
             Controls.Add(textNombreCliente);
             Controls.Add(lblNombreCliente);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             Name = "AdministracionClientes";
             StartPosition = FormStartPosition.CenterScreen;

@@ -62,11 +62,18 @@ namespace DAL
                 return bd.Clientes.Where(a => a.Activo == Activo).ToList();
             }
         }
-        public static bool ValidarNumero(string Numero, int IdRegistro)
+        public static bool ExisteNumero(string Numero, int IdRegistro)
         {
             using (BDMPOO bd = new())
             {
-                return bd.Clientes.Where(a => a.Numero == Numero && a.IdCliente != IdRegistro).Count() > 0;
+                return bd.Clientes.Where(a => a.Numero == Numero && a.IdCliente != IdRegistro && a.Activo == true).Count() > 0;
+            }
+        }
+        public static bool ExisteCorreo(string Email, int IdRegistro)
+        {
+            using (BDMPOO bd = new())
+            {
+                return bd.Clientes.Where(a => a.Correo == Email && a.IdCliente != IdRegistro && a.Activo == true).Count() > 0;
             }
         }
     }    

@@ -65,7 +65,11 @@ namespace UI
                 MessageBox.Show("Ingrese un número de teléfono válido");
                 return false;
             }
-
+            if (BLL_Clientes.ExisteNumero(textNumero.Text, IdRegistro))
+            {
+                MessageBox.Show("El número de teléfono ya se encuentra registrado");
+                return false;
+            }
             if ((string.IsNullOrEmpty(textCorreo.Text)) || string.IsNullOrWhiteSpace(textCorreo.Text))
             {
                 MessageBox.Show("Ingrese el nombre del cliente");
@@ -79,6 +83,11 @@ namespace UI
             if (!General.ValidateEmail(textCorreo.Text))
             {
                 MessageBox.Show("Ingrese un correo válido");
+                return false;
+            }
+            if (BLL_Clientes.ExisteCorreo(textCorreo.Text, IdRegistro))
+            {
+                MessageBox.Show("El correo ya se encuentra registrado");
                 return false;
             }
 
