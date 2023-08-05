@@ -6,6 +6,7 @@ namespace UI
 {
     public partial class AdministracionClientes : Form
     {
+        //By Ulisestm3
         //variables gobales
         private static int IdUsuarioSesion = 1;
         private static int IdRegistro = 0;
@@ -158,7 +159,7 @@ namespace UI
             try
             {
                 IdRegistro = Convert.ToInt32(gripClientes.CurrentRow.Cells[0].Value);
-                lbl_IdRegistro.Text = IdRegistro.ToString();
+                //lbl_IdRegistro.Text = IdRegistro.ToString();
                 textNombreCliente.Text = gripClientes.CurrentRow.Cells[1].Value.ToString();
                 textNumero.Text = gripClientes.CurrentRow.Cells[2].Value.ToString();
                 textCorreo.Text = gripClientes.CurrentRow.Cells[3].Value.ToString();
@@ -207,6 +208,5 @@ namespace UI
         }
 
         #endregion
-
     }
 }
