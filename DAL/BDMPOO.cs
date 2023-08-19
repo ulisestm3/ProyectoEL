@@ -15,5 +15,6 @@ namespace DAL
         public virtual DbSet<RolPermisos>? RolPermisos { get; set; }
         public virtual DbSet<Usuarios>? Usuarios { get; set; }
         public virtual DbSet<Clientes>? Clientes { get; set; }
+        public virtual DbSet<Productos>? Productos { get; set; }
     }
 }
